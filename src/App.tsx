@@ -47,12 +47,18 @@ class ParamEditor extends React.Component<Props, State> {
 		this.state = {paramValues: initialParamValues};
 	}
 
-	getModel(): Model {
-
+	getModel() {
+		return {
+			paramValues: Object.entries(this.state.paramValues).map(
+				([paramId, value]) => ({ paramId: +paramId, value })
+			),
+			colors: this.props.model.colors,
+		};
 	}
 
-	// 4. записать в state полученные параметры
-	// 5. Реализовать метод редактирования параметров с сохранением в state
+	onChange(paramId: number) {
+
+	}
 	// 6. Реализовать рендер всех полученных параметров в виде редактируемых инпутов
     // 7. решить как сделать добавление новых типов
 }
