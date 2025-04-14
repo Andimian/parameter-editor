@@ -47,7 +47,7 @@ class ParamEditor extends React.Component<Props, State> {
 		this.state = {paramValues: initialParamValues};
 	}
 
-	getModel() {
+	getModel = () => {
 		return {
 			paramValues: Object.entries(this.state.paramValues).map(
 				([paramId, value]) => ({ paramId: +paramId, value })
@@ -56,8 +56,23 @@ class ParamEditor extends React.Component<Props, State> {
 		};
 	}
 
-	onChange(paramId: number) {
+	onChange = (paramId: number, value: string) => {
+		this.setState((prevState) => ({
+			paramValues: {
+				...prevState.paramValues,
+				[paramId]: value
+			}
+			})
+		);
+	}
 
+	render = () => {
+		return (
+			<div>
+				<h1>Параметры</h1>
+
+			</div>
+		);
 	}
 	// 6. Реализовать рендер всех полученных параметров в виде редактируемых инпутов
     // 7. решить как сделать добавление новых типов
