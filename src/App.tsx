@@ -27,23 +27,43 @@ interface ParamValue {
 	paramId: number;
 	value: string;
 }
-
-// 1. Типизировать state.
-// 2. Типизировать Color
+type Color = string; // Предположительно цвет будет задан в виде HEX строки
+interface State {
+	paramValues: Record<number, string>;
+}
 
 class ParamEditor extends React.Component<Props, State> {
-	// 3. Реализовать getModel() - возможно как вывод в консоль
+	constructor(props: Props) {
+		super(props);
+
+		// Записать в state значения параметров как объект вида: {[paramId: number]: string}
+		const initialParamValues: Record<number, string> = {};
+		props.model.paramValues.forEach((paramValue) => {
+			// Предполагаем что id параметра при создании идентично id значения параметра
+			// Но на всякий случай обработаем
+			const param = props.params.find((param) => paramValue.paramId === param.id);
+			initialParamValues[paramValue.paramId] = param ? paramValue.value : '';
+		})
+		this.state = {paramValues: initialParamValues};
+	}
+
+	getModel(): Model {
+
+	}
+
 	// 4. записать в state полученные параметры
 	// 5. Реализовать метод редактирования параметров с сохранением в state
 	// 6. Реализовать рендер всех полученных параметров в виде редактируемых инпутов
     // 7. решить как сделать добавление новых типов
 }
 
+// 8. Вызвать компонент редактора с переданной структорой
 
 function App() {
 	return (
 		<>
 			Редактор параметров
+
 		</>
 	)
 }
