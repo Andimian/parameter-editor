@@ -1,0 +1,16 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+.editor {
+	display: flex;
+	flex-direction: column;
+}
+.param {
+	min-width: 100px;
+	display: inline-block;
+}
